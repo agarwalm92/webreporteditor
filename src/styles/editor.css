@@ -1,4 +1,4 @@
-/* === Reset & base === */
+/* ── Reset ── */
 *,
 *::before,
 *::after {
@@ -8,15 +8,11 @@
 }
 
 body {
-  font-family:
-    "Segoe UI",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   background: #f0f0f0;
 }
 
-/* === App shell === */
+/* ── App shell ── */
 .app-shell {
   display: flex;
   flex-direction: column;
@@ -24,7 +20,7 @@ body {
   overflow: hidden;
 }
 
-/* === Top bar (like Word's title bar) === */
+/* ── Top bar ── */
 .top-bar {
   height: 44px;
   background: #1e3a5f;
@@ -33,21 +29,22 @@ body {
   padding: 0 16px;
   gap: 12px;
   flex-shrink: 0;
+  z-index: 100;
 }
-
 .top-bar-title {
   color: #fff;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   letter-spacing: 0.02em;
 }
-
 .top-bar-doc {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  white-space: nowrap;
 }
 
-/* === Toolbar ribbon (like Word's ribbon) === */
+/* ── Toolbar ribbon ── */
 .toolbar-ribbon {
   background: #fff;
   border-bottom: 1px solid #d1d5db;
@@ -57,128 +54,298 @@ body {
   align-items: center;
   flex-shrink: 0;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
 }
-
-/* Override CKEditor toolbar to blend in */
 .toolbar-ribbon .ck.ck-toolbar {
   border: none !important;
   background: transparent !important;
   box-shadow: none !important;
   padding: 0 !important;
 }
-
 .toolbar-ribbon .ck.ck-toolbar .ck-toolbar__items {
   flex-wrap: wrap;
 }
 
-/* === Page scroll area (grey surround like Word) === */
+/* ── Page scroll area ── */
 .page-scroll {
   flex: 1;
   overflow-y: auto;
-  background: #e8e8e8;
-  padding: 32px 24px 64px;
+  background: #c8c8c8;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0;
 }
 
-/* === The A4 page itself === */
+/* ── A4 page ── */
+/* A4 at 96dpi = 794px × 1123px                             */
+/* Margins: top/bottom 20mm = 75px, left/right 25mm = 94px  */
 .ck-editor__editable.ck-editor__editable_inline {
   width: 794px !important;
   min-height: 1123px !important;
-  padding: 96px !important;
+  padding: 75px 94px !important;
   background: #ffffff !important;
-  border: 1px solid #c8c8c8 !important;
-  border-radius: 2px !important;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.14) !important;
-  /* Typography that feels like Word */
-  font-family: "Calibri", "Segoe UI", sans-serif !important;
-  font-size: 11pt !important;
-  line-height: 1.6 !important;
-  color: #111 !important;
-  /* Remove CKEditor's default focus outline */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow:
+    0 0 0 1px #bbb,
+    0 4px 20px rgba(0, 0, 0, 0.18) !important;
   outline: none !important;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif !important;
+  font-size: 10.5pt !important;
+  line-height: 1.6 !important;
+  color: #1a1a1a !important;
+  margin: 0 !important;
 }
 
-/* Focused state — subtle blue left border like Word */
+/* Focused state */
 .ck-editor__editable.ck-editor__editable_inline.ck-focused {
-  border-left: 3px solid #1e3a5f !important;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18) !important;
+  box-shadow:
+    0 0 0 1px #1e3a5f,
+    0 4px 20px rgba(0, 0, 0, 0.22) !important;
 }
 
-/* === Headings inside the page === */
-.ck-editor__editable h1 {
+/* ── Document title H1 ── */
+.ck.ck-content h1,
+.ck-editor__editable.ck-editor__editable_inline h1 {
   font-size: 22pt !important;
   font-weight: 700 !important;
   color: #1e3a5f !important;
-  font-family: "Calibri", "Segoe UI", sans-serif !important;
-  margin-bottom: 6px !important;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif !important;
+  margin: 0 0 4px 0 !important;
   line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  text-transform: none !important;
 }
 
-.ck-editor__editable h2 {
-  font-size: 15pt !important;
-  font-weight: 600 !important;
-  color: #374151 !important;
-  margin-bottom: 12px !important;
-  font-family: "Calibri", "Segoe UI", sans-serif !important;
+/* ── Document subtitle H2 ── */
+.ck.ck-content h2,
+.ck-editor__editable.ck-editor__editable_inline h2 {
+  font-size: 13pt !important;
+  font-weight: 400 !important;
+  color: #4b5563 !important;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif !important;
+  margin: 0 0 16px 0 !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  text-transform: none !important;
 }
 
-.ck-editor__editable h3 {
-  font-size: 11pt !important;
+/* ── Section headings H3–H6 — all same style ── */
+/* Navy bold text with underline border — classic Word report */
+.ck.ck-content h3,
+.ck.ck-content h4,
+.ck.ck-content h5,
+.ck.ck-content h6,
+.ck-editor__editable.ck-editor__editable_inline h3,
+.ck-editor__editable.ck-editor__editable_inline h4,
+.ck-editor__editable.ck-editor__editable_inline h5,
+.ck-editor__editable.ck-editor__editable_inline h6 {
+  font-size: 12pt !important;
   font-weight: 700 !important;
   color: #1e3a5f !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  border-bottom: 1.5px solid #1e3a5f !important;
-  padding-bottom: 3px !important;
-  margin: 20px 0 10px !important;
-  font-family: "Calibri", "Segoe UI", sans-serif !important;
-}
-
-/* === Paragraph spacing === */
-.ck-editor__editable p {
-  margin-bottom: 8px !important;
-}
-
-/* === Tables === */
-.ck-editor__editable table {
-  border-collapse: collapse !important;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif !important;
+  border-bottom: 2px solid #1e3a5f !important;
+  border-left: none !important;
+  border-top: none !important;
+  border-right: none !important;
+  padding: 0 0 4px 0 !important;
+  margin: 28px 0 12px 0 !important;
+  background: none !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1.3 !important;
   width: 100% !important;
-  margin: 12px 0 !important;
-  font-size: 10pt !important;
+  display: block !important;
 }
 
-.ck-editor__editable table td,
-.ck-editor__editable table th {
-  border: 1px solid #d1d5db !important;
-  padding: 6px 12px !important;
+/* ── Paragraph ── */
+.ck.ck-content p,
+.ck-editor__editable.ck-editor__editable_inline p {
+  margin: 0 0 9px 0 !important;
+  text-align: justify !important;
+  line-height: 1.6 !important;
 }
 
-.ck-editor__editable table th {
-  background: #1e3a5f !important;
-  color: #fff !important;
-  font-weight: 600 !important;
-}
-
-.ck-editor__editable table tr:nth-child(even) td {
-  background: #f9fafb !important;
-}
-
-/* === Horizontal rule === */
-.ck-editor__editable hr {
+/* ── Horizontal rule ── */
+.ck.ck-content hr,
+.ck-editor__editable.ck-editor__editable_inline hr {
   border: none !important;
   border-top: 1px solid #d1d5db !important;
   margin: 16px 0 !important;
 }
 
-/* === Status bar at bottom of top bar === */
+/* ── Tables ── */
+.ck.ck-content .table,
+.ck-editor__editable.ck-editor__editable_inline .table {
+  margin: 16px 0 !important;
+  width: 100% !important;
+}
+
+.ck.ck-content table,
+.ck-editor__editable.ck-editor__editable_inline table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  font-size: 9.5pt !important;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif !important;
+}
+
+.ck.ck-content table th,
+.ck-editor__editable.ck-editor__editable_inline table th {
+  background: #1e3a5f !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  padding: 7px 12px !important;
+  text-align: left !important;
+  font-size: 9pt !important;
+  letter-spacing: 0.02em !important;
+  border: 1px solid #1e3a5f !important;
+  white-space: nowrap !important;
+}
+
+.ck.ck-content table td,
+.ck-editor__editable.ck-editor__editable_inline table td {
+  padding: 6px 12px !important;
+  border: 1px solid #e5e7eb !important;
+  vertical-align: top !important;
+  color: #1a1a1a !important;
+  line-height: 1.4 !important;
+}
+
+.ck.ck-content table tr:nth-child(even) td,
+.ck-editor__editable.ck-editor__editable_inline table tr:nth-child(even) td {
+  background: #f0f4f8 !important;
+}
+
+.ck.ck-content table tr:hover td,
+.ck-editor__editable.ck-editor__editable_inline table tr:hover td {
+  background: #e8eef5 !important;
+}
+
+/* ── Blockquote — callout stats ── */
+.ck.ck-content blockquote,
+.ck-editor__editable.ck-editor__editable_inline blockquote {
+  border-left: 4px solid #1e3a5f !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  background: #f0f4f8 !important;
+  margin: 16px 0 !important;
+  padding: 12px 16px !important;
+  font-style: normal !important;
+  color: #1e3a5f !important;
+  font-size: 10.5pt !important;
+  font-weight: 600 !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.ck.ck-content blockquote p,
+.ck-editor__editable.ck-editor__editable_inline blockquote p {
+  margin: 0 !important;
+  text-align: left !important;
+  color: #1e3a5f !important;
+}
+
+/* ── Lists ── */
+.ck.ck-content ul,
+.ck.ck-content ol,
+.ck-editor__editable.ck-editor__editable_inline ul,
+.ck-editor__editable.ck-editor__editable_inline ol {
+  margin: 0 0 10px 0 !important;
+  padding-left: 22px !important;
+}
+
+.ck.ck-content li,
+.ck-editor__editable.ck-editor__editable_inline li {
+  margin-bottom: 4px !important;
+  line-height: 1.5 !important;
+}
+
+/* ── Strong / Bold ── */
+.ck.ck-content strong,
+.ck-editor__editable.ck-editor__editable_inline strong {
+  font-weight: 700 !important;
+  color: inherit !important;
+}
+
+/* ── Links ── */
+.ck.ck-content a,
+.ck-editor__editable.ck-editor__editable_inline a {
+  color: #1e3a5f !important;
+  text-decoration: underline !important;
+}
+
+/* ── Page break — pagination plugin ── */
+.ck-editor__editable .ck-widget.page-break,
+.ck-editor__editable [data-pagination-break],
+.ck-editor__editable .ck-page-break,
+.ck-editor__editable .page-break {
+  display: block !important;
+  position: relative !important;
+  width: calc(100% + 188px) !important;
+  margin-left: -94px !important;
+  margin-right: -94px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  height: 28px !important;
+  background: #c8c8c8 !important;
+  border-top: 2px solid #999 !important;
+  border-bottom: 2px solid #999 !important;
+  cursor: default !important;
+  overflow: visible !important;
+}
+
+.ck-editor__editable .ck-widget.page-break::before,
+.ck-editor__editable .page-break::before {
+  content: "PAGE BREAK" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  font-size: 8px !important;
+  font-family: "Segoe UI", sans-serif !important;
+  font-weight: 600 !important;
+  color: #888 !important;
+  letter-spacing: 0.1em !important;
+}
+
+.ck-editor__editable .ck-widget.page-break::after,
+.ck-editor__editable .page-break::after {
+  content: attr(data-page-number) !important;
+  display: block !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: #1e3a5f !important;
+  color: #fff !important;
+  font-size: 9px !important;
+  font-family: "Segoe UI", sans-serif !important;
+  font-weight: 600 !important;
+  padding: 2px 8px !important;
+  border-radius: 2px 0 0 2px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.ck-editor__editable .ck-widget.page-break > *,
+.ck-editor__editable .page-break > * {
+  display: none !important;
+}
+
+/* ── Save pill ── */
 .save-pill {
-  margin-left: auto;
   font-size: 12px;
   padding: 3px 10px;
   border-radius: 10px;
   font-weight: 500;
+  white-space: nowrap;
 }
 .save-pill.saved {
   background: #d1fae5;
@@ -193,57 +360,111 @@ body {
   color: #991b1b;
 }
 
-/* === Preview panel body inherits document styles === */
+/* ── Preview panel ── */
 .preview-body h1 {
   font-size: 16pt;
   font-weight: 700;
   color: #1e3a5f;
-  margin-bottom: 4px;
-  font-family: "Calibri", "Segoe UI", sans-serif;
+  margin-bottom: 3px;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+  line-height: 1.2;
 }
 .preview-body h2 {
-  font-size: 12pt;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 8px;
-  font-family: "Calibri", "Segoe UI", sans-serif;
+  font-size: 10pt;
+  font-weight: 400;
+  color: #4b5563;
+  margin-bottom: 10px;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
 }
-.preview-body h3 {
+.preview-body h3,
+.preview-body h4,
+.preview-body h5,
+.preview-body h6 {
   font-size: 9pt;
   font-weight: 700;
   color: #1e3a5f;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid #1e3a5f;
+  border-bottom: 1.5px solid #1e3a5f;
   padding-bottom: 2px;
-  margin: 12px 0 6px;
-  font-family: "Calibri", "Segoe UI", sans-serif;
+  margin: 14px 0 6px 0;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+  background: none;
+  text-transform: none;
+  letter-spacing: 0;
 }
 .preview-body p {
   margin-bottom: 5px;
   font-size: 8pt;
+  line-height: 1.5;
+  text-align: justify;
 }
 .preview-body table {
   border-collapse: collapse;
   width: 100%;
-  margin: 6px 0;
-  font-size: 7.5pt;
-}
-.preview-body table td,
-.preview-body table th {
-  border: 1px solid #d1d5db;
-  padding: 3px 6px;
+  margin: 8px 0;
+  font-size: 7pt;
 }
 .preview-body table th {
   background: #1e3a5f;
   color: #fff;
   font-weight: 600;
+  padding: 4px 7px;
+  text-align: left;
+  border: 1px solid #1e3a5f;
+}
+.preview-body table td {
+  padding: 3px 7px;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
 }
 .preview-body table tr:nth-child(even) td {
-  background: #f9fafb;
+  background: #f0f4f8;
+}
+.preview-body blockquote {
+  border-left: 3px solid #1e3a5f;
+  background: #f0f4f8;
+  margin: 8px 0;
+  padding: 6px 10px;
+  color: #1e3a5f;
+  font-size: 8pt;
+  font-weight: 600;
+  border-radius: 0 3px 3px 0;
+}
+.preview-body blockquote p {
+  margin: 0;
+  color: #1e3a5f;
 }
 .preview-body hr {
   border: none;
   border-top: 1px solid #d1d5db;
   margin: 8px 0;
+}
+.preview-body ul,
+.preview-body ol {
+  margin: 0 0 6px 0;
+  padding-left: 16px;
+}
+.preview-body li {
+  font-size: 8pt;
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+.preview-body strong {
+  font-weight: 700;
+}
+
+/* ── Print ── */
+@media print {
+  .top-bar,
+  .toolbar-ribbon {
+    display: none !important;
+  }
+  .page-scroll {
+    background: white !important;
+    padding: 0 !important;
+  }
+  .ck-editor__editable {
+    box-shadow: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
 }

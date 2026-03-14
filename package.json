@@ -12,6 +12,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^11.0.1",
     "ckeditor5": "^47.6.1",
+    "ckeditor5-premium-features": "^47.6.1",
     "echarts": "^6.0.0",
     "echarts-for-react": "^3.0.6",
     "react": "^19.2.4",
