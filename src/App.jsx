@@ -121,7 +121,7 @@ function PreviewPanel({ content, pageCount }) {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        background: "#f3f4f6",
+        background: "#f9fafb",
         overflow: "hidden",
       }}
     >
@@ -144,44 +144,30 @@ function PreviewPanel({ content, pageCount }) {
         }}
       >
         <span>👁 Live Preview</span>
-        <span style={{ fontSize: 10, fontWeight: 400, color: "#9ca3af" }}>
+        <span
+          style={{
+            fontSize: 10,
+            fontWeight: 400,
+            color: "#9ca3af",
+          }}
+        >
           {pageCount} {pageCount === 1 ? "page" : "pages"}
         </span>
       </div>
 
-      {/* Scrollable area */}
+      {/* Readable content — no A4 frame, full width, comfortable font */}
       <div
         style={{
           flex: 1,
           overflow: "auto",
-          background: "#c8c8c8",
-          padding: "16px 12px",
+          padding: "28px 32px",
+          background: "#fff",
         }}
       >
-        {/* A4 page scaled to fit preview width */}
         <div
-          style={{
-            background: "#fff",
-            width: 794,
-            minHeight: 1123,
-            padding: "75px 94px",
-            boxShadow: "0 0 0 1px #bbb, 0 2px 12px rgba(0,0,0,0.15)",
-            transformOrigin: "top left",
-            /* Scale 794px wide page to fit inside preview panel */
-            /* Preview panel is ~38% of viewport, so scale accordingly */
-            transform: "scale(var(--preview-scale, 0.42))",
-            marginBottom: "calc((1 - var(--preview-scale, 0.42)) * -1123px)",
-            fontFamily: "Calibri, Segoe UI, Arial, sans-serif",
-            fontSize: "10.5pt",
-            lineHeight: 1.5,
-            color: "#1a1a1a",
-          }}
-        >
-          <div
-            className="ck-content"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        </div>
+          className="preview-body preview-readable"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </div>
     </div>
   );

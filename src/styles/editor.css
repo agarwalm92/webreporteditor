@@ -468,3 +468,119 @@ body {
     padding: 0 !important;
   }
 }
+/* ── Preview — readable mode ── */
+/* Full size, comfortable reading, no A4 constraint */
+.preview-readable {
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
+.preview-readable h1 {
+  font-size: 20pt;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+}
+
+.preview-readable h2 {
+  font-size: 13pt;
+  font-weight: 400;
+  color: #4b5563;
+  margin: 0 0 16px 0;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+}
+
+.preview-readable h3,
+.preview-readable h4,
+.preview-readable h5,
+.preview-readable h6 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: #1e3a5f;
+  border-bottom: 2px solid #1e3a5f;
+  padding-bottom: 4px;
+  margin: 24px 0 10px 0;
+  font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+  background: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.preview-readable p {
+  margin: 0 0 9px 0;
+  font-size: 11pt;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.preview-readable table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0;
+  font-size: 10pt;
+}
+
+.preview-readable table th {
+  background: #1e3a5f;
+  color: #fff;
+  font-weight: 600;
+  padding: 7px 12px;
+  text-align: left;
+  font-size: 9.5pt;
+  border: 1px solid #1e3a5f;
+}
+
+.preview-readable table td {
+  padding: 6px 12px;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+  font-size: 10pt;
+  line-height: 1.4;
+}
+
+.preview-readable table tr:nth-child(even) td {
+  background: #f0f4f8;
+}
+
+.preview-readable blockquote {
+  border-left: 4px solid #1e3a5f;
+  background: #f0f4f8;
+  margin: 14px 0;
+  padding: 12px 16px;
+  color: #1e3a5f;
+  font-size: 11pt;
+  font-weight: 600;
+  border-radius: 0 4px 4px 0;
+}
+
+.preview-readable blockquote p {
+  margin: 0;
+  color: #1e3a5f;
+  text-align: left;
+}
+
+.preview-readable hr {
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 16px 0;
+}
+
+.preview-readable ul,
+.preview-readable ol {
+  margin: 0 0 10px 0;
+  padding-left: 22px;
+}
+
+.preview-readable li {
+  font-size: 11pt;
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+.preview-readable strong {
+  font-weight: 700;
+}
